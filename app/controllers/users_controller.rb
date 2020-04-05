@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        @user = User.where(email:params[:user][:email])
+        user = User.where(email:params[:user][:email])
         if @user.empty?
             @user = User.new(params[:user])
             if @user.save
