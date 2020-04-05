@@ -1,0 +1,17 @@
+<h1>Looks Yummy!</h1>
+<ul>
+    <li><%=@meal.name%>
+    <li><%=@meal.protein%>
+    <li><%=@meal.carb%>
+    <li><%=@meal.fat%>
+    <li><%=@meal.fruit%>
+    <li><%=@meal.veg%>
+</ul>
+<a href="/meals/<%=@meal.id%>/edit"><button> edit </button></a>
+<form action="/meals/<%= @meal.id %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="delete">
+
+
+
+</form>

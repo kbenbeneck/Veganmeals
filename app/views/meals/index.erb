@@ -1,0 +1,7 @@
+<h1> <%= @user.name%>'s Meals</h1>
+
+<ul>
+<% @meals.each do |meal| %>
+    <li> <a href="/meals/<%= meal.id %>"> <%= meal.name %></a></li>
+<% end %>
+</ul>

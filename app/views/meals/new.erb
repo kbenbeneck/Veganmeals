@@ -1,0 +1,64 @@
+<h1>Creat New Meal</h1>
+<form action="/meals" method="post">
+    <label>Name</label>
+    <input type="text" name="meal[name]">
+    <div>
+        <label >Protein</label>
+            <select name="meal[protein]" value="@meal.protein">
+            <option>Tempeh</option>
+            <option>Tofo</option>
+            <option>Quinoa</option>
+            <option>Beans</option>
+            <option>Lentils</option>
+            <option>Meatlessballs</option>
+            <option>Vegan Protein Powder</option>
+        </select>
+    
+        <label>Carbs</label>
+        <select name="meal[carb]" value="@meal.carb">
+            <option>Sweat Potatoes</option>
+            <option>Rice</option>
+            <option>Pita</option>
+            <option>Tortilla</option>
+            <option>Whole Grain Bread</option>
+            <option>Beer</option>
+            <option>Crackers</option>
+            <option>Oatmeal</option>
+            <option>Pasta</option>
+            <option>Corn</option>
+        </select>
+        <label>Fats</label>
+        <select name="meal[fat]" value="@meal.fat">
+            <option>Avocado</option>
+            <option>Hummus</option>
+            <option>Seeds</option>
+            <option>Earth Balance</option>
+            <option>Nut Butter</option>
+        </select>
+        <label>Fruits</label>
+        <select name="meal[fruit]" value="@meal.fruit">
+            <option>Salsa</option>
+            <option>Apples</option>
+            <option>Melon</option>
+            <option>Berries</option>
+            <option>Red Sauce</option>
+        </select>
+        <label>Vegetables</label>
+        <select name="meal[veg]" value="@meal.veg">
+            <option>Peppers</option>
+            <option>Kale</option>
+            <option>Broccoli</option>
+            <option>Watercress</option>
+            <option>Collard Greens</option>
+            <option>Brussels Sprouts</option>
+            <option>Asparagus</option>
+            <option>Mushrooms</option>
+            <option>Romaine</option>
+            <option>Beets</option>
+            <option>Onions</option>
+            <option>Cabbage</option>
+            <option>Peas</option>
+        </select>
+    </div>
+    <input type="submit">
+</form>
