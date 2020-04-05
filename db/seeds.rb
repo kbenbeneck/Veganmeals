@@ -1,0 +1,2 @@
+Meal.create(name:"Harvest", protein:"lentils", carb:"rice",fat:"earth balance", fruit:"melon", veg:"kale")
+Meal.create(name:"Southwest", protein:"beans", carb:"torilla",fat:"avocado", fruit:"salsa", veg:"peppers")
