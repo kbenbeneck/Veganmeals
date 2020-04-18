@@ -5,18 +5,15 @@
 
     <label>Name</label>
     <input type="text" name="meal[name]" value="<%= @meal.name%>" >
-    <p></p>
-    <p><%= @meal.protein%></p>
-    <p><%= @meal.carb%></p>
-    <p><%= @meal.fat%></p>
-    <p><%= @meal.fruit%></p>
-    <p><%= @meal.veg%></p>
+    
+
     <div>
         
         <label >Protein</label>
-            <select name="meal[protein]" value="<% @meal.protein%>"</select>>
+            <select name="meal[protein]" value="<% @meal.protein%>">
+            <option selected><%= @meal.protein%></option>
             <option>Tempeh</option>
-            <option>Tofo</option>
+            <option>Tofu</option>
             <option>Quinoa</option>
             <option>Beans</option>
             <option>Lentils</option>
@@ -24,8 +21,9 @@
             <option>Vegan Protein Powder</option>
         </select>
         
-        <label>Carbs</label>
+        <label>Carb</label>
         <select name="meal[carb]" value="@meal.carb">
+            <option selected><%= @meal.carb%></option>
             <option>Sweat Potatoes</option>
             <option>Rice</option>
             <option>Pita</option>
@@ -39,6 +37,7 @@
         </select>
         <label>Fats</label>
         <select name="meal[fat]" value="@meal.fat">
+            <option selected><%= @meal.fat%></option>
             <option>Avocado</option>
             <option>Hummus</option>
             <option>Seeds</option>
@@ -47,6 +46,7 @@
         </select>
         <label>Fruits</label>
         <select name="meal[fruit]" value="@meal.fruit">
+            <option selected><%= @meal.fruit%></option>
             <option>Salsa</option>
             <option>Apples</option>
             <option>Melon</option>
@@ -55,6 +55,7 @@
         </select>
         <label>Vegetables</label>
         <select name="meal[veg]" value="@meal.veg">
+            <option selected><%= @meal.veg%></option>
             <option>Peppers</option>
             <option>Kale</option>
             <option>Broccoli</option>
