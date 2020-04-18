@@ -11,59 +11,79 @@ class MealsController < ApplicationController
     end
         
     get '/meals/new' do
-        erb :"/meals/new"
+        if logged_in?
+            erb :"/meals/new"
+        else
+            redirect '/login'
+        end
     end
 
     get '/meals/:id' do
-        #id = params[:id]
-        find_meal
-        if @meal
-            erb :"meals/show"
+        if logged_in?
+            find_meal
+            if @meal
+                erb :"meals/show"
+            else
+                redirect '/meals'
+            end
         else
-            redirect '/meals'
+            redirect '/login'
         end
     end
 
     post '/meals' do
-        meals = Meal.where(name:params[:meal][:name])
-        if meals.empty?
-            meal = Meal.new(params[:meal])
-            if meal.save
-                redirect "/meals/#{meal.id}"
-            else
-                redirect "/meals/new"
+        if logged_in?
+            meals = Meal.where(name:params[:meal][:name])
+            if meals.empty?
+                meal = Meal.new(params[:meal]) && params[:user_id] = @user.id
+                if meal.save
+                    redirect "/meals/#{meal.id}"
+                else
+                    redirect "/meals/new"
+                end
             end
+        else
+            redirect '/login'
         end
     end
 
     get '/meals/:id/edit' do
-        find_meal
-        if @meal
-            erb :"meals/edit"
+        if logged_in?
+            find_meal
+            if @meal
+                erb :"meals/edit"
+            else
+                redirect '/meals'
+            end
         else
-            redirect '/meals'
+            redirect '/login'
         end
-
     end
 
     patch '/meals/:id' do
-        find_meal
-
-        if @meal.update(params[:meal])
-            redirect "/meals/#{@meal.id}"
+        if logged_in?
+            find_meal
+            if @meal.update(params[:meal])
+                redirect "/meals/#{@meal.id}"
+            else
+                redirect "/meals/#{@meal.id}/edit"
+            end
         else
-            redirect "/meals/#{@meal.id}/edit"
+            redirect '/login'
         end
     end
 
     delete '/meals/:id' do
-        find_meal
-        if @meal.destroy
-            redirect '/meals'
+        if logged_in?
+            find_meal
+            if @meal.destroy
+                redirect '/meals'
+            else
+                redirect "/meals/#{@meal.id}"
+            end
         else
-            redirect "/meals/#{@meal.id}"
+            redirect '/login'
         end
-
     end
 
     private
