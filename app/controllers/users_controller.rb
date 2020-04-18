@@ -4,31 +4,30 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        user = User.where(email:params[:user][:email])
-        if @user.empty?
-            @user = User.new(params[:user])
-            if @user.save
-                redirect '/login'
-            else
-                redirect '/signup'
-            end
-        end
+        
+    #     user = User.create(name: params[:name], password: params[:password], email: params[:email])
 
-    end
+    #     if user.save
+            
+    #         redirect '/login'
+    #     else
+    #         redirect '/login'
+    #     end
+    # end
 
 
 
     
-    #     @user = User.new
-    #     @user.name = params[:name]
-    #     @user.email = params[:email]
-    #     @user.password = params[:password]
-    #     if @user.save
-    #         redirect '/login'
-    #     else
-    #         redirect '/signup'
-    #     end
-    # end
+        @user = User.new
+        @user.name = params[:name]
+        @user.email = params[:email]
+        @user.password = params[:password]
+        if @user.save
+            redirect '/login'
+        else
+            redirect '/signup'
+        end
+    end
 end
 
 
