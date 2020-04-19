@@ -35,7 +35,8 @@ class MealsController < ApplicationController
         if logged_in?
             meals = Meal.where(name:params[:meal][:name])
             if meals.empty?
-                meal = Meal.new(params[:meal]) && params[:user_id] = @user.id
+                meal = Meal.new(params[:meal])
+                meal.user_id = current_user.id
                 if meal.save
                     redirect "/meals/#{meal.id}"
                 else
@@ -50,7 +51,8 @@ class MealsController < ApplicationController
     get '/meals/:id/edit' do
         if logged_in?
             find_meal
-            if @meal
+            
+            if @meal.user_id == current_user.id
                 erb :"meals/edit"
             else
                 redirect '/meals'
