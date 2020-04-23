@@ -1,4 +1,8 @@
-<h1>Creat New Meal</h1>
+
+<h1>Create New Meal</h1>
+<% if @meal.errors.any? %>
+    <h3><%= @meal.errors.full_messages.to_sentence%></h3>
+<% end %>
 <form action="/meals" method="post">
     <label>Name</label>
     <input type="text" name="meal[name]">
@@ -38,6 +42,7 @@
         <label>Fruits</label>
         <select name="meal[fruit]" value="@meal.fruit">
             <option>Salsa</option>
+            <option>Smoothie</option>
             <option>Apples</option>
             <option>Melon</option>
             <option>Berries</option>
