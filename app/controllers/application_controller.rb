@@ -23,7 +23,12 @@ class ApplicationController < Sinatra::Base
       @user ||= User.find_by_id(session[:user_id]) if logged_in?
     end
 
-  
+    def redirect_if_not_owner
+      if current_user.id != @meal.user_id
+        redirect '/meals'
+      end 
+    end
+
 
 
 
