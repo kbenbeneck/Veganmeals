@@ -46,15 +46,12 @@ class MealsController < ApplicationController
             redirect '/login'
         end
     end
-
+   
     get '/meals/:id/edit' do
         if logged_in?
             find_meal          
-            if @meal.user_id == current_user.id
-                erb :"meals/edit"
-            else
-                redirect '/meals'
-            end
+            redirect_if_not_owner
+            erb :"meals/edit"   
         else
             redirect '/login'
         end
@@ -63,14 +60,11 @@ class MealsController < ApplicationController
     patch '/meals/:id' do
         if logged_in?
             find_meal
-            if @meal.user_id == current_user.id
-                if @meal.update(params[:meal])
-                    redirect "/meals/#{@meal.id}"
-                else
-                    redirect "/meals/#{@meal.id}/edit"
-                end
+            redirect_if_not_owner
+            if @meal.update(params[:meal])
+                redirect "/meals/#{@meal.id}"
             else
-                redirect '/meals'
+                redirect "/meals/#{@meal.id}/edit"
             end
         else
             redirect '/login'
@@ -80,6 +74,7 @@ class MealsController < ApplicationController
     delete '/meals/:id' do
         if logged_in?
             find_meal
+            redirect_if_not_owner
             if @meal.destroy
                 redirect '/meals'
             else
