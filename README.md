@@ -26,7 +26,8 @@ To use this app:
  Once submitted, the newly created meal's show page will be displayed with links to edit and delete.
 
  In the top nav bar, click `Meals` to view a list, or index, of all created Meals. 
- 
+# Blog Post
+https://kbenbeneck.github.io/sinatra_project_blog
 # Contributing Bugfixes or Features
 For submitting something back, be it a patch, some documentation, or new feature requires some level of community interactions.
 
